@@ -1,8 +1,15 @@
-#include "header.h"
-#include "vars.h"
+#include <fstream>
+#include <functional>
+#include <iostream>
+#include <string>
+#include <sstream>
+
+//Change for full path
+const std::string PASSWORDS = "pass.txt";
 
 bool authenticate(std::string username, std::string password, std::string file);
 bool checkDuplicateUsername(std::string username, std::string file);
+int hash(std::string x)
 std::string convertToLine(std::string username, std::string passwordHash);
 void addUser(std::string username, std::string passwordHash);
 void append(std::string file, std::string message);
@@ -49,6 +56,13 @@ bool checkDuplicateUsername(std::string username, std::string file){
         }
     }
     return false;
+}
+
+int hash(std::string x){
+    std::hash<char*> ptr_hash;
+    std::hash<std::string> str_hash;
+    return(str_hash(x));
+    return 0;
 }
 
 void append(std::string file, std::string message){
